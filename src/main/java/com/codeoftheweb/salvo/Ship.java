@@ -22,7 +22,7 @@ public class Ship {
     private String ship_type;
 
     @ElementCollection
-    @Column(name="email")
+    @Column(name="location")
     private List<String> ship_location = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -30,6 +30,11 @@ public class Ship {
     private GamePlayer gamePlayer;
 
     public Ship() {};
+
+    public Ship(List location, String type) {
+        this.ship_type = type;
+        this.ship_location = location;
+    }
 
     public long getId() {
         return id;

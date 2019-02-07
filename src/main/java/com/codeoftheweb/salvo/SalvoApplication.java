@@ -8,7 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @SpringBootApplication
 public class SalvoApplication {
@@ -20,7 +22,7 @@ public class SalvoApplication {
 	;
 
 	@Bean
-	public CommandLineRunner initData(PlayerRepository playerRepository, GameRepository gameRepository, GamePlayerRepository gameplayerRepository)  {
+	public CommandLineRunner initData(PlayerRepository playerRepository, GameRepository gameRepository, GamePlayerRepository gameplayerRepository, ShipRepository shipRepository)  {
 		return (args) -> {
 			Player p1 = new Player("j.bauer@ctu.gov");
 			Player p2 = new Player("c.obrian@ctu.gov ");
@@ -45,8 +47,18 @@ public class SalvoApplication {
 			GamePlayer gp4 = new GamePlayer(p4, g3);
 			gameplayerRepository.save(gp4);
 
+			List s1_location = new ArrayList<String>();
+			s1_location.add("A1");
+			Ship s1 = new Ship(s1_location, "Destroyer");
+//			Ship s2 = new Ship("A5, A6, A7", "Submarine");
+//			Ship s3 = new Ship("D2, E2, F2, G2", "Patrol Boat");
+			shipRepository.save(s1);
+//			shipRepository.save(s2);
+//			shipRepository.save(s3);
+			gp1.addShip(s1);
 
-		};
+
+			};
 
 	}
 }
