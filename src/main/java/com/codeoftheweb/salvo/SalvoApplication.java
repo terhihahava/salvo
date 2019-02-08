@@ -49,13 +49,20 @@ public class SalvoApplication {
 
 			List s1_location = new ArrayList<String>();
 			s1_location.add("A1");
+			List s2_location = new ArrayList<String>();
+			s2_location.add("B2 B3 B4");
+			List s3_location = new ArrayList<String>();
+			s3_location.add("D5 D6 D7");
 			Ship s1 = new Ship(s1_location, "Destroyer");
-//			Ship s2 = new Ship("A5, A6, A7", "Submarine");
-//			Ship s3 = new Ship("D2, E2, F2, G2", "Patrol Boat");
-			shipRepository.save(s1);
-//			shipRepository.save(s2);
-//			shipRepository.save(s3);
+			Ship s2 = new Ship(s2_location, "Submarine");
+			Ship s3 = new Ship(s3_location, "Patrol Boat");
 			gp1.addShip(s1);
+			gp1.addShip(s2);
+			gp1.addShip(s3);
+			shipRepository.save(s1);
+			shipRepository.save(s2);
+			shipRepository.save(s3);
+
 
 
 			};
