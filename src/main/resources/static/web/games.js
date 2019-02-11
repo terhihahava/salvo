@@ -1,3 +1,5 @@
+console.log("Hello");
+
 var url = "http://localhost:8080/api/games";
 
 fetch(url)
